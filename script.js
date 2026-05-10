@@ -365,22 +365,35 @@ document.getElementById('chat-input').addEventListener('keypress', function (e) 
     if (e.key === 'Enter') sendChat();
 });
 
-// --- RENDER DEWAN PENGAWAS & PETA MINI ---
 function renderPetinggi() {
     const list = document.getElementById('petinggi-list');
-    const data = [{n:"Ir. Robin", j:"Ketua"}, {n:"Dr. Rayen", j:"Ahli Gizi"}, {n:"Bpk. Catur Croty", j:"Logistik"}, {n:"Bpk. Rapiuus", j:"Keuangan (Hobi Korupsi)"}];
+    
+    // Pastikan nama petingginya sama persis
+    const data = [
+        {n:"Ir. Robin", j:"Ketua Pengawas"}, 
+        {n:"Dr. Rayen", j:"Ahli Gizi"}, 
+        {n:"Bpk. Catur", j:"Logistik"},
+        {n:"Bpk. Rapiuus", j:"Keuangan (Hobi Korupsi)"}
+    ];
+    
     list.innerHTML = data.map(p => `
-        <div class="flex flex-col items-center min-w-[120px]">
-            <img src="https://ui-avatars.com/api/?name=${p.n}&background=random&color=fff" class="w-16 h-16 rounded-full border-4 border-white shadow-xl hover:scale-110 transition cursor-pointer">
+        <div class="flex flex-col items-center min-w-[120px] cursor-pointer group" onclick="${p.n === 'Ir. Robin' ? 'playRobinSound()' : ''}">
+            <img src="https://ui-avatars.com/api/?name=${p.n}&background=random&color=fff" class="w-16 h-16 rounded-full border-4 border-white shadow-xl group-hover:scale-110 transition">
             <p class="text-xs font-bold mt-3 text-gray-800">${p.n}</p>
             <p class="text-[10px] text-blue-500 font-bold uppercase tracking-widest">${p.j}</p>
         </div>
     `).join('');
 }
-
 function initMapMini() {
     if(mapMini) mapMini.remove();
     mapMini = L.map('map-mini', {zoomControl: false}).setView([-2.99, 104.75], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapMini);
     L.marker([-2.99, 104.75]).addTo(mapMini);
+}
+// 
+function playRobinSound() {
+    // Pastiin file mp3-nya ada di folder yang sama ya!
+    const audio = new Audio('suara_robin.mp3');
+    audio.play().catch(e => console.log("HIDUP JOKOWI!"));
+    
 }
