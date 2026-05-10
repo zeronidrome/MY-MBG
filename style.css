@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+body { font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+
+/* --- WEB JELEK (TOPENG) --- */
+.ugly-container { background-color: #00ffcc; font-family: "Comic Sans MS", cursive; min-height: 100vh; padding: 20px; }
+.ugly-header { background-color: yellow; border: 5px dashed red; padding: 10px; margin-bottom: 20px; }
+.ugly-marquee { font-size: 20px; color: red; font-weight: bold; }
+.ugly-table { background-color: #ff99ff; border: 8px outset #990099; margin: 0 auto; border-collapse: collapse; }
+.ugly-table td { border: 2px solid black; padding: 15px; font-weight: bold; }
+.ugly-btn { background-color: blue; color: white; padding: 10px 20px; cursor: wait; border: 4px outset navy; }
+
+/* --- TRANSISI GARUDA EPIC --- */
+#garuda-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.hidden-overlay { display: none !important; }
+.split-left, .split-right { position: absolute; top: 0; bottom: 0; width: 50.5%; background-color: #0056b3; transition: transform 2.5s cubic-bezier(0.77, 0, 0.175, 1); }
+.split-left { left: 0; } .split-right { right: 0; }
+#garuda-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1); width: 120px; z-index: 10000; transition: all 2.5s cubic-bezier(0.25, 1, 0.5, 1); filter: drop-shadow(0 0 20px gold); }
+#garuda-overlay.active .split-left { transform: translateX(-100%); }
+#garuda-overlay.active .split-right { transform: translateX(100%); }
+#garuda-overlay.active #garuda-center { transform: translate(-50%, -50%) scale(12); opacity: 0; }
+
+/* --- ANIMASI BLINK/FLASH SAAT PINDAH TAB --- */
+#flash-overlay { position: fixed; inset: 0; background-color: white; z-index: -1; opacity: 0; pointer-events: none; }
+.flash-bang { animation: flashAnim 0.8s ease-out forwards; z-index: 99999 !important; }
+@keyframes flashAnim {
+    0% { opacity: 0; }
+    40% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* --- SIDEBAR TOGGLE --- */
+#sidebar { transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; }
+.sidebar-collapsed { width: 80px !important; }
+.sidebar-collapsed .sidebar-text { display: none; }
+
+/* --- CHAT WA BUBBLE --- */
+.wa-bg { background-color: #efeae2; background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); }
+.wa-bubble-in { background-color: white; border-radius: 0 12px 12px 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); align-self: flex-start; max-width: 85%; }
+.wa-bubble-out { background-color: #dcf8c6; border-radius: 12px 0 12px 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); align-self: flex-end; max-width: 85%; }
+
+/* --- UTILS --- */
+.fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.scrollbar-hide::-webkit-scrollbar { width: 4px; }
+.scrollbar-hide::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+#globe-container { transition: all 0.3s ease-in-out; }
