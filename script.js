@@ -13,7 +13,7 @@ let state = {
 };
 
 // --- GIMMICK WEB JELEK ---
-function fakeLogin() { alert("ERROR 503: DANA SEDANG DI-AUDIT. Silakan hubungi RT setempat."); }
+function fakeLogin() { alert("ERROR 503: MALAS BUKA SERVER."); }
 
 // --- TRANSISI GARUDA ---
 function startReveal() {
